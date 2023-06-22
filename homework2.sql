@@ -1,3 +1,9 @@
+CREATE DATABASE IF NOT EXISTS homework2;
+
+USE homework2;
+
+DROP TABLE IF EXISTS sales;
+
 CREATE TABLE sales (
   id INT PRIMARY KEY,
   order_date DATE,
@@ -11,14 +17,16 @@ VALUES (1, '2022-01-01', 156),
        (4, '2022-01-04', 124),
        (5, '2022-01-05', 341);
 SELECT 
-  CASE 
-    WHEN count_product < 100 THEN 'Меньше 100' 
-    WHEN count_product BETWEEN 100 AND 300 THEN '100-300' 
-    ELSE 'Больше 300' 
-  END AS count_segment, 
-  COUNT(*) AS count_segment_count
+	CASE 
+		WHEN count_product < 100 THEN 'Меньше 100' 
+		WHEN count_product BETWEEN 100 AND 300 THEN '100-300' 
+		ELSE 'Больше 300' 
+	END AS count_segment, 
+	COUNT(*) AS count_segment_count
 FROM sales
 GROUP BY count_segment;
+
+DROP TABLE IF EXISTS orders;
 
 CREATE TABLE orders (
   id INT PRIMARY KEY,
